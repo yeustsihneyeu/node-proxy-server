@@ -1,21 +1,15 @@
 const axios = require('axios');
 const sprintf = require('sprintf-js').sprintf;
+require('dotenv').config();
 
 
-// PROXY-1: Print Hello World
-console.log("Hello world!");
-
-// PROXY-2: Make first server to server API request
+// PROXY-3: Add environment variables
 const START_DATE = "2024-04-01";
 const END_DATE = "2024-04-05";
-const API_KEY = "";
-const URL = "https://api.nasa.gov/neo/rest/v1/feed?start_date=%s&end_date=%s&api_key=%s";
+const API_KEY = process.env.API_KEY;
+const URL = process.env.NASA_ASTEROID_URL;
 
 axios
     .get(sprintf(URL, START_DATE, END_DATE, API_KEY))
-    .then((res) => {
-        console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
