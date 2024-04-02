@@ -1,16 +1,17 @@
 {
   "name": "node-proxy-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "node-proxy-server",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ayeustsihneyeu",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "sprintf-js": "^1.1.3"
   }
 }
