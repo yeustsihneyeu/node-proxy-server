@@ -11,8 +11,8 @@ export class Asteroid {
         this.id = id;
         this.name = name;
         this.diameter = meters;
-        this.close_approach_date_full = [firstElement?.['close_approach_date_full']];
-        this.relative_velocity = [firstElement?.['relative_velocity']];
-        this.is_potentially_hazardous_asteroid = is_potentially_hazardous_asteroid;
+        this.closeApproachDateFull = [firstElement?.['close_approach_date_full']];
+        this.relativeVelocity = [firstElement?.['relative_velocity']];
+        this.isPotentiallyHazardousAsteroid = is_potentially_hazardous_asteroid;
     }
 }
