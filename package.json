@@ -11,9 +11,13 @@
   "author": "ayeustsihneyeu",
   "license": "ISC",
   "dependencies": {
+    "@joi/date": "^2.1.0",
     "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "joi": "^17.12.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
