@@ -7,6 +7,6 @@ export const getAsteroidsData = async (req, res, next) => {
 
     getAsteroids(start_date, end_date)
         .then(({ data }) => mapToResponse(data, params))
-        .then(response => res.status(200).render('meteor/index.html', { response: response }))
+        .then(response => res.status(200).json(response))
         .catch(err => next(err));
 };
