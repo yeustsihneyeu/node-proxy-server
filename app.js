@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(nasaRouter);
 
-app.use(notFound);
 app.use(errorHandler);
+app.use(notFound);
 
 app.listen(PORT, (err) => {
     err ? console.log(err) : console.log(`listening port ${PORT}`);
