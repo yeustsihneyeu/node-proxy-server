@@ -1,5 +1,5 @@
 import express from 'express';
-import { PORT, SERVICE_NAME } from './config.js';
+import { PORT } from './config.js';
 import routes from './routes/index.js';
 import apiRoutes from './routes/api/index.js';
 import { errorHandler, notFound } from './middleware/error-handler.js';
@@ -28,7 +28,7 @@ app.use('/api', apiRoutes);
 app.use(errorHandler);
 app.use(notFound);
 
-registerToConsul({ name: SERVICE_NAME, port: Number(PORT) });
+registerToConsul();
 
 app.listen(PORT, (err) => {
     err ? console.log(err) : console.log(`listening port ${PORT}`);
