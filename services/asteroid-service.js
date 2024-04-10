@@ -1,4 +1,5 @@
 import { Asteroid } from '../models/Asteroid.js';
+import { getRoverManifests, getRecentRoverPhoto } from '../client/nasa-client.js'
 
 const getAsteroids = (data) => {
     const dates = data['near_earth_objects'];
@@ -21,4 +22,11 @@ export const mapToResponse = (data, params) => {
         ...( params.wereDangerousMeteors ? { wereDangerousMeteors: wereDangerousMeteors } : {} ),
         asteroids: asteroidsData,
     };
+}
+
+export const getRecentRover = async (data) => {
+    return getRoverManifests(data)
+        .then(({ data }) => data['photo_manifest']['max_date'])
+        .then(maxDate => getRecentRoverPhoto({ ...data, earth_date: maxDate }))
+        .then(({ data: { photos } }) => photos[photos.length - 1]['img_src']);
 }

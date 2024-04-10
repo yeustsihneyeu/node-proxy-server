@@ -1,10 +1,10 @@
 import express from 'express';
-import { getAsteroidsData } from '../controllers/nasa-controller.js';
+import { asteroidHandler } from '../controllers/nasa-controller.js';
 import { meteorsSchema } from '../validations/nasa-validation.js';
-import { validate } from '../middleware/validation.js';
+import { validateQuery } from '../middleware/validation.js';
 
 const router = express.Router();
 
-router.get('/meteors', validate(meteorsSchema.query), getAsteroidsData);
+router.get('/meteors', validateQuery(meteorsSchema), asteroidHandler);
 
 export default router;

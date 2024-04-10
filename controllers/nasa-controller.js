@@ -1,7 +1,7 @@
 import { getAsteroids } from '../client/nasa-client.js';
 import { mapToResponse } from '../services/asteroid-service.js'
 
-export const getAsteroidsData = async (req, res, next) => {
+export const asteroidHandler = async (req, res, next) => {
     const { start_date, end_date, count, wereDangerousMeteors } = req.query;
     const params = { count, wereDangerousMeteors };
 
