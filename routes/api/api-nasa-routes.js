@@ -1,10 +1,12 @@
 import express from 'express';
-import { getAsteroidsData } from '../../controllers/api-nasa-controller.js';
-import { meteorsSchema } from '../../validations/nasa-validation.js';
-import { validate } from '../../middleware/validation.js';
+import { asteroidHandler, roverHandler } from '../../controllers/api-nasa-controller.js';
+import { meteorsSchema, roverSchema } from '../../validations/nasa-validation.js';
+import { validateQuery, validateBody } from '../../middleware/validation.js';
 
 const router = express.Router();
 
-router.get('/meteors', validate(meteorsSchema.query), getAsteroidsData);
+router
+    .get('/meteors', validateQuery(meteorsSchema), asteroidHandler)
+    .post('/rover', validateBody(roverSchema), roverHandler);
 
 export default router;

@@ -9,5 +9,13 @@ export const meteorsSchema = {
         end_date: Joi.date().format('YYYY-MM-DD').min(Joi.ref('start_date')),
         count: Joi.boolean().default(false),
         wereDangerousMeteors: Joi.boolean().default(false),
-    })
+    }),
+}
+
+export const roverSchema = {
+    body: Joi.object({
+        user_id: Joi.string().min(1).max(5).required(),
+        user_name: Joi.string().min(1).max(12).required(),
+        user_api_key: Joi.string().min(1).max(64).required(),
+    }),
 }
