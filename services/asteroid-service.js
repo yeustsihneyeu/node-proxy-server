@@ -17,8 +17,8 @@ const getAsteroids = (data) => {
 export const mapToResponse = (data, params) => {
     const { asteroidsData, wereDangerousMeteors } = getAsteroids(data);
     return {
-        ...( params.count === 'true' ? { count: data['element_count'] } : {} ),
-        ...( params.wereDangerousMeteors === 'true' ? { wereDangerousMeteors: wereDangerousMeteors } : {} ),
+        ...( params.count ? { count: data['element_count'] } : {} ),
+        ...( params.wereDangerousMeteors ? { wereDangerousMeteors: wereDangerousMeteors } : {} ),
         asteroids: asteroidsData,
     };
 }
