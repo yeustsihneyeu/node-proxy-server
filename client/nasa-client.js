@@ -31,7 +31,7 @@ export const getRoverManifests = ({ user_name, user_api_key }) => {
         });
 }
 
-export const getRecentRoverPhoto = ({ earth_date, user_name, user_api_key }) => {
+export const getRecentRoverPhotos = ({ earth_date, user_name, user_api_key }) => {
     return axios.get(NASA_ROVER_URL, { params: { earth_date: earth_date, api_key: user_api_key } })
         .catch(err => {
             throw new Error(`Error retrieving of rover photo for user ${user_name} due [${err}]`);
