@@ -1,10 +1,8 @@
 import { Asteroid } from '../models/Asteroid.js';
-import { config } from 'dotenv';
-config();
 
 const getAsteroids = (data) => {
     const dates = data['near_earth_objects'];
-    let wereDangerousMeteors;
+    let wereDangerousMeteors = false;
     const asteroidsData = Object.keys(dates)
         .map(key => dates[key])
         .flat()
@@ -18,9 +16,9 @@ const getAsteroids = (data) => {
 
 export const mapToResponse = (data, params) => {
     const { asteroidsData, wereDangerousMeteors } = getAsteroids(data);
-    return  {
+    return {
         ...( params.count ? { count: data['element_count'] } : {} ),
         ...( params.wereDangerousMeteors ? { wereDangerousMeteors: wereDangerousMeteors } : {} ),
         asteroids: asteroidsData,
-    }
+    };
 }
