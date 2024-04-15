@@ -3,5 +3,5 @@ export const errorHandler = (err, req, res, next) => {
 };
 
 export const notFound = (req, res) => {
-    res.status(404).json('Resource Not Found');
+    res.status(200).render('not-found-page.html');
 };
