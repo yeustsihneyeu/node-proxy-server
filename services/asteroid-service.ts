@@ -1,9 +1,15 @@
-import { Asteroid } from '../models/Asteroid.js';
-import { getRoverManifests, getRecentRoverPhotos } from '../client/nasa-client.js'
+import { Asteroid } from '../models/Asteroid';
+import { getRoverManifests, getRecentRoverPhotos } from '../client/nasa-client'
+import {AsteroidResponse} from "../models/asteroid-response";
 
-const getAsteroids = (data) => {
+export type Params = {
+    count: any;
+    wereDangerousMeteors: any;
+}
+
+const getAsteroids = (data: any): { asteroidsData: Asteroid[], wereDangerousMeteors: boolean } => {
     const dates = data['near_earth_objects'];
-    let wereDangerousMeteors = false;
+    let wereDangerousMeteors: boolean = false;
     const asteroidsData = Object.keys(dates)
         .map(key => dates[key])
         .flat()
@@ -15,7 +21,7 @@ const getAsteroids = (data) => {
     return { asteroidsData, wereDangerousMeteors };
 }
 
-export const mapToResponse = (data, params) => {
+export const mapToResponse = (data: any, params: Params): AsteroidResponse => {
     const { asteroidsData, wereDangerousMeteors } = getAsteroids(data);
     return {
         ...( params.count ? { count: data['element_count'] } : {} ),
@@ -24,9 +30,9 @@ export const mapToResponse = (data, params) => {
     };
 }
 
-export const getRecentRoverPhoto = async (data) => {
+export const getRecentRoverPhoto = async (data: any): Promise<any> => {
     return getRoverManifests(data)
-        .then(({ data }) => data['photo_manifest']['max_date'])
+        .then(({ data }: any) => data['photo_manifest']['max_date'])
         .then(maxDate => getRecentRoverPhotos({ ...data, earth_date: maxDate }))
         .then(({ data: { photos } }) => photos[photos.length - 1]['img_src']);
 }

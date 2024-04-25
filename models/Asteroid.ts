@@ -1,5 +1,12 @@
 export class Asteroid {
-    constructor(date) {
+    public id: string;
+    public name: string;
+    public diameter: string;
+    public closeApproachDateFull: any[];
+    public relativeVelocity: any[];
+    public isPotentiallyHazardousAsteroid: boolean | string;
+
+    constructor(date: any) {
         const {
             id, name,
             estimated_diameter: { meters },
